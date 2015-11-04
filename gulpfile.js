@@ -1,6 +1,7 @@
 var gulp = require('gulp')
   , gutil = require('gulp-util')
-  , del = require('del')
+  // , del = require('del')
+  , rimraf = require('rimraf')
   , concat = require('gulp-concat')
   , rename = require('gulp-rename')
   , minifycss = require('gulp-minify-css')
@@ -21,8 +22,9 @@ paths = {
   dist:   './dist/'
 };
 
-gulp.task('clean', function (cb) {
-  del([paths.dist], cb);
+gulp.task('clean', function () {
+  // del([paths.dist], cb);
+  rimraf.sync(paths.dist)
 });
 
 gulp.task('copy-assets', ['clean'], function () {
